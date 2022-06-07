@@ -21,15 +21,14 @@ class MenuScene extends Phaser.Scene {
 
   preload () {
     console.log('Menu Scene')
-    this.load.image('menuSceneBackground', './images/aliens_screen_image2.jpg')
+    this.load.image('MenuSceneBackground', './images/aliens_screen_image2.jpg')
   }
 
   create (data) {
-    this.menuSceneBackgroundImage = this.add.sprite(0, 0, 'MenuSceneBackground').setScale(2.75)
+    this.menuSceneBackgroundImage = this.add.sprite(0, 0, 'MenuSceneBackground').setScale(1)
     this.menuSceneBackgroundImage.x = 1920 / 2
     this.menuSceneBackgroundImage.y = 1080 / 2
 
-    this.menuSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Test', this.menuSceneTextStyle).setOrigin(0.5)
   }
 
   update (time, delta) {
