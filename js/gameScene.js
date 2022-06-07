@@ -10,9 +10,7 @@ class GameScene extends Phaser.Scene {
   constructor () {
     super({ key: 'gameScene' })
 
-    this.gameSceneBackgroundImage = null
-    this.gameSceneText = null
-    this.gameSceneTextStyle = { font: '200px Times', fill: '#fde4b9', align: 'center' }
+    this.background = null
   }
 
   init (data) {
@@ -21,14 +19,15 @@ class GameScene extends Phaser.Scene {
 
   preload () {
     console.log('Game Scene')
+    
     //star backdrop image
     this.load.image('starBackground', './images/starBackground.png')
+    
   }
 
   create (data) {
-    this.gameSceneBackgroundImage = this.add.sprite(0, 0, 'GameSceneBackground').setScale(1)
-    this.gameSceneBackgroundImage.x = 1920 / 2
-    this.gameSceneBackgroundImage.y = 1080 / 2
+    this.background = this.add.sprite(0, 0, 'starBackground').setScale(2.00)
+    this.background.setOrigin(0, 0)
 
   }
 
