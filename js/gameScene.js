@@ -31,6 +31,7 @@ class GameScene extends Phaser.Scene {
     this.background = this.add.sprite(0, 0, 'starBackground').setScale(2.00)
     this.background.setOrigin(0, 0)
 
+    this.ship = this.physics.add.sprite(1920 / 2, 1000 - 100, 'ship')
   }
 
   update (time, delta) {
