@@ -4,15 +4,15 @@
 //
 // Created by: Angelo Pintilie
 // Created on: June 2022
-// This is the Title Scene
+// This is the Game Scene
 
-class MenuScene extends Phaser.Scene {
+class GameScene extends Phaser.Scene {
   constructor () {
-    super({ key: 'menuScene' })
+    super({ key: 'gameScene' })
 
-    this.menuSceneBackgroundImage = null
-    this.menuSceneText = null
-    this.menuSceneTextStyle = { font: '200px Times', fill: '#fde4b9', align: 'center' }
+    this.gameSceneBackgroundImage = null
+    this.gameSceneText = null
+    this.gameSceneTextStyle = { font: '200px Times', fill: '#fde4b9', align: 'center' }
   }
 
   init (data) {
@@ -20,14 +20,14 @@ class MenuScene extends Phaser.Scene {
   }
 
   preload () {
-    console.log('Menu Scene')
-    this.load.image('MenuSceneBackground', './images/aliens_screen_image2.jpg')
+    console.log('Game Scene')
+    this.load.image('GameSceneBackground', './images/aliens_screen_image2.jpg')
   }
 
   create (data) {
-    this.menuSceneBackgroundImage = this.add.sprite(0, 0, 'MenuSceneBackground').setScale(1)
-    this.menuSceneBackgroundImage.x = 1920 / 2
-    this.menuSceneBackgroundImage.y = 1080 / 2
+    this.gameSceneBackgroundImage = this.add.sprite(0, 0, 'GameSceneBackground').setScale(1)
+    this.gameSceneBackgroundImage.x = 1920 / 2
+    this.gameSceneBackgroundImage.y = 1080 / 2
 
   }
 
@@ -36,4 +36,4 @@ class MenuScene extends Phaser.Scene {
   }
 }
 
-export default MenuScene
+export default GameScene

@@ -4,7 +4,7 @@
 //
 // Created by: Angelo Pintilie
 // Created on: June 2022
-// This is the Title Scene
+// This is the Game Scene
 
 class MenuScene extends Phaser.Scene {
   constructor () {
