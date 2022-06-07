@@ -21,7 +21,7 @@ class TitleScene extends Phaser.Scene {
 
   preload () {
     console.log('Title Scene')
-    this.load.image('titleSceneBackground', 'images/UFOTITLE.jpg')
+    this.load.image('titleSceneBackground', './images/UFOTITLE.jpg')
   }
 
   create (data) {
