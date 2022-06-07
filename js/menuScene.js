@@ -11,8 +11,7 @@ class MenuScene extends Phaser.Scene {
     super({ key: 'menuScene' })
 
     this.menuSceneBackgroundImage = null
-    this.menuSceneText = null
-    this.menuSceneTextStyle = { font: '200px Times', fill: '#fde4b9', align: 'center' }
+    this.startButton = null
   }
 
   init (data) {
@@ -22,6 +21,7 @@ class MenuScene extends Phaser.Scene {
   preload () {
     console.log('Menu Scene')
     this.load.image('MenuSceneBackground', './images/aliens_screen_image2.jpg')
+    this.load.image('startButton', './images/start.png')
   }
 
   create (data) {
