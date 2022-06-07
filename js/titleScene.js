@@ -1,6 +1,6 @@
 /* global Phaser */
 
-// Copyright (c) 2022 Angelo Pinilie All rights reserved
+// Copyright (c) 2022 Angelo Pintilie All rights reserved
 //
 // Created by: Angelo Pintilie
 // Created on: June 2022
@@ -21,7 +21,7 @@ class TitleScene extends Phaser.Scene {
 
   preload () {
     console.log('Title Scene')
-    this.load.image('titleSceneBackground', 'images/UFOTITLE.jpg')
+    this.load.image('titleSceneBackground', 'images/aliens_screen_image.jpg')
   }
 
   create (data) {
