@@ -21,9 +21,10 @@ class GameScene extends Phaser.Scene {
   preload () {
     console.log('Game Scene')
     
-    //star backdrop image and space ship image
+    //star backdrop image, spaceship image and missle image
     this.load.image('starBackground', './images/starBackground.png')
     this.load.image('ship', './images/spaceShip.png')
+    this.load.image('missile', './images/missile.png')
     
   }
 
