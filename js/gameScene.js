@@ -35,7 +35,12 @@ class GameScene extends Phaser.Scene {
   }
 
   update (time, delta) {
-    
+    //called every 60 seconds
+
+    const keyLeftObj = this.input.keyboard.addKey('LEFT')
+
+    if (keyLeftObj.isDown === true) {
+      
   }
 }
 
