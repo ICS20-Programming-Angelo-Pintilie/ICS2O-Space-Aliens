@@ -12,6 +12,7 @@ class GameScene extends Phaser.Scene {
 
     this.background = null
     this.ship = null
+    this.fireMissile = false
   }
 
   init (data) {
@@ -60,8 +61,12 @@ class GameScene extends Phaser.Scene {
     }
 
     if (keySpaceObj.isDown === true) {
-      const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
-      this.missileGroup.add(aNewMissile)
+      if (this.fireMissile === false) {
+        //fire a missile
+        this.fireMissile = true
+        const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
+        this.missileGroup.add(aNewMissile)
+      }  
     }
   }
 }
