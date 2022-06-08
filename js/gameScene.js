@@ -14,7 +14,7 @@ class GameScene extends Phaser.Scene {
     this.ship = null
     this.fireMissile = false
   }
-
+    //background set to white
   init (data) {
     this.cameras.main.setBackgroundColor('#ffffff')
   }
@@ -28,7 +28,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('missile', './images/missile.png')
     
   }
-
+    //dimensions for screen
   create (data) {
     this.background = this.add.sprite(0, 0, 'starBackground').setScale(2.00)
     this.background.setOrigin(0, 0)
@@ -45,14 +45,14 @@ class GameScene extends Phaser.Scene {
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
-
+    //code to move ship left
     if (keyLeftObj.isDown === true) {
       this.ship.x -= 15
       if (this.ship.x < 0) {
         this.ship.x = 0
       }
     }
-
+    //code to move ship right
     if (keyRightObj.isDown === true) {
       this.ship.x += 15
       if (this.ship.x > 1920) {

@@ -14,16 +14,16 @@ class TitleScene extends Phaser.Scene {
     this.titleSceneText = null
     this.titleSceneTextStyle = { font: '200px Times', fill: '#fde4b9', align: 'center' }
   }
-
+    //setting background to white
   init (data) {
     this.cameras.main.setBackgroundColor('#ffffff')
   }
-
+    //calling image from image file
   preload () {
     console.log('Title Scene')
     this.load.image('titleSceneBackground', 'images/UFOTITLE.jpg')
   }
-
+    //dimensions of screen
   create (data) {
     this.titleSceneBackgroundImage = this.add.sprite(0, 0, 'titleSceneBackground').setScale(2.75)
     this.titleSceneBackgroundImage.x = 1920 / 2
@@ -31,7 +31,7 @@ class TitleScene extends Phaser.Scene {
 
     this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Space Aliens', this.titleSceneTextStyle).setOrigin(0.5)
   }
-
+    //time in which screen will switch to menu screen
   update (time, delta) {
     if (time > 6000) {
       this.scene.switch('menuScene')
