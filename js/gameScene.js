@@ -7,6 +7,14 @@
 // This is the Game Scene
 
 class GameScene extends Phaser.Scene {
+
+  //create a ufo
+  createUfo () {
+    const aUfo = this.physics.add.sprite(100, 100, 'ufo')
+    this.ufoGroup.add(aUfo)
+    
+  }
+  
   constructor () {
     super({ key: 'gameScene' })
 
@@ -26,6 +34,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('starBackground', './images/starBackground.png')
     this.load.image('ship', './images/spaceShip.png')
     this.load.image('missile', './images/missile.png')
+    this.load.image('ufo', './images/ufo.png')
     //sound for missle shot
     this.load.audio('laser', './sounds/missileNoise.wav')
     
@@ -39,6 +48,10 @@ class GameScene extends Phaser.Scene {
     
     // create group for missles
     this.missileGroup = this.physics.add.group()
+
+    // create group for aliens/ufos 
+    this.ufoGroup = this.add.group()
+    this.createUfo()
   }
 
   update (time, delta) {
