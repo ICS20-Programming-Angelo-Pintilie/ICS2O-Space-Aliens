@@ -11,8 +11,11 @@ class GameScene extends Phaser.Scene {
   //create a ufo
   createUfo () {
     const ufoXLocation = Math.floor(Math.random() * 1920) + 1 // this will get a number between 1 and 1920;
+    let ufoXVelocity = Math.floor(Math.random() * 50) + 1 // this will get a number between 1 and 50;
+    ufoXVelocity *= Math.round(Math.random()) ? 1 : -1 // this will add minus sign in 50% of cases
     const aUfo = this.physics.add.sprite(ufoXLocation, 100, 'ufo')
     aUfo.body.velocity.y = 200
+    aUfo.body.velocity.x = ufoXVelocity
     this.ufoGroup.add(aUfo)
     
   }
