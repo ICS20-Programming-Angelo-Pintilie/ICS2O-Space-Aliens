@@ -10,7 +10,8 @@ class GameScene extends Phaser.Scene {
 
   //create a ufo
   createUfo () {
-    const aUfo = this.physics.add.sprite(100, 100, 'ufo')
+    const ufoXLocation = Math.floor(Math.random() * 1920) + 1 // this will get a number between 1 and 1920;
+    const aUfo = this.physics.add.sprite(ufoXLocation, 100, 'ufo')
     this.ufoGroup.add(aUfo)
     
   }
