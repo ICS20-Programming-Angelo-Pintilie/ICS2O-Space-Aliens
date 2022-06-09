@@ -27,7 +27,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('ship', './images/spaceShip.png')
     this.load.image('missile', './images/missile.png')
     //sound for missle shot
-    this.load.image('missile', './sounds/missileNoise.wav')
+    this.load.audio('missile', './sounds/missileNoise.wav')
     
   }
     //dimensions for screen
