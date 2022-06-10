@@ -43,7 +43,7 @@ class GameScene extends Phaser.Scene {
     
     //star backdrop image, spaceship image and missle image
     this.load.image('starBackground', './images/starBackground.png')
-    this.load.image('ship', './images/spaceShip.png')
+    this.load.image('ship', './images/El.png')
     this.load.image('missile', './images/missile.png')
     this.load.image('ufo', './images/ufo.png')
     //sound for missle shot
