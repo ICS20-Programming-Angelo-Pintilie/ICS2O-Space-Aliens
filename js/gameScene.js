@@ -49,6 +49,7 @@ class GameScene extends Phaser.Scene {
     //sound for missle shot
     this.load.audio('laser', './sounds/missileNoise.wav')
     this.load.audio('explosion', './sounds/ufoExplosion.wav')
+    this.load.audio('bomb', './sounds/bomb.wav')
     
   }
     //dimensions for screen
