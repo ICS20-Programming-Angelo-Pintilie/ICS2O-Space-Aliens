@@ -42,6 +42,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('ufo', './images/ufo.png')
     //sound for missle shot
     this.load.audio('laser', './sounds/missileNoise.wav')
+    this.load.audio('explosion', './sounds/ufoExplosion.wav')
     
   }
     //dimensions for screen
@@ -62,6 +63,7 @@ class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.missileGroup, this.ufoGroup, function (missileCollide, ufoCollide) {
       ufoCollide.destroy()
       missileCollide.destroy()
+      this.sound.play('explosion')
       this.createUfo()
       this.createUfo()
     }.bind(this)) 
