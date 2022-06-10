@@ -57,6 +57,12 @@ class GameScene extends Phaser.Scene {
     // create group for aliens/ufos 
     this.ufoGroup = this.add.group()
     this.createUfo()
+
+    // collisions between missles and ufos
+    this.physics.add.collider(this.missileGroup, this.ufoGroup, function (missileCollide, ufoCollide) {
+      ufoCollide.destroy()
+      missileCollide.destroy()
+    }.bind(this)) 
   }
 
   update (time, delta) {
