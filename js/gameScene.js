@@ -26,10 +26,11 @@ class GameScene extends Phaser.Scene {
     this.background = null
     this.ship = null
     this.fireMissile = false
+    //score counter
     this.score = 0
     this.scoreText = null
     this.scoreTextStyle = { font: '65px Arial', fill: '#ffffff', align: 'center' }
-
+    //game over text
     this.gameOverText = null
     this.gameOverTextStyle = { font: '65px Arial', fill: '#ff0000', align: 'center' }
   }
@@ -44,7 +45,7 @@ class GameScene extends Phaser.Scene {
     //star backdrop image, spaceship image and missle image
     this.load.image('starBackground', './images/starBackground.png')
     this.load.image('ship', './images/El.png')
-    this.load.image('missile', './images/missile.png')
+    this.load.image('missile', './images/waffle.png')
     this.load.image('ufo', './images/ufo.png')
     //sound for missle shot
     this.load.audio('laser', './sounds/missileNoise.wav')

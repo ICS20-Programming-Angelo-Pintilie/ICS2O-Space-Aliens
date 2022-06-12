@@ -12,7 +12,7 @@ class TitleScene extends Phaser.Scene {
 
     this.titleSceneBackgroundImage = null
     this.titleSceneText = null
-    this.titleSceneTextStyle = { font: '200px Times', fill: '#fde4b9', align: 'center' }
+    this.titleSceneTextStyle = { font: '199px Times', fill: '#8B0000', align: 'center' }
   }
     //setting background to white
   init (data) {
@@ -29,7 +29,7 @@ class TitleScene extends Phaser.Scene {
     this.titleSceneBackgroundImage.x = 1920 / 2
     this.titleSceneBackgroundImage.y = 1080 / 2
 
-    this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Space Aliens', this.titleSceneTextStyle).setOrigin(0.5)
+    this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, "Eleven's Eggo Launcher", this.titleSceneTextStyle).setOrigin(0.5)
   }
     //time in which screen will switch to menu screen
   update (time, delta) {

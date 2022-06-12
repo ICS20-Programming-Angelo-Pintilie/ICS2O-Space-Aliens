@@ -12,6 +12,9 @@ class MenuScene extends Phaser.Scene {
 
     this.menuSceneBackgroundImage = null
     this.startButton = null
+    //instructions
+    this.menuSceneText = null
+    this.menuSceneTextStyle = { font: '35px Times', fill: '#6F8FAF', align: 'center' }
   }
 
   init (data) {
@@ -20,12 +23,12 @@ class MenuScene extends Phaser.Scene {
 
   preload () {
     console.log('Menu Scene')
-    this.load.image('MenuSceneBackground', './images/aliens_screen_image2.jpg')
+    this.load.image('MenuSceneBackground', './images/UDMENU.png')
     this.load.image('startButton', './images/start.png')
   }
 
   create (data) {
-    this.menuSceneBackgroundImage = this.add.sprite(0, 0, 'MenuSceneBackground').setScale(1)
+    this.menuSceneBackgroundImage = this.add.sprite(0, 0, 'MenuSceneBackground').setScale(2)
     this.menuSceneBackgroundImage.x = 1920 / 2
     this.menuSceneBackgroundImage.y = 1080 / 2
 
@@ -33,7 +36,7 @@ class MenuScene extends Phaser.Scene {
     this.startButton.setInteractive({ useHandCursor: true })
     this.startButton.on('pointerdown', () => this.clickButton())
     
-    this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Instructions: shoot = space bar | move left = left arrow | move right = right arrow | *important* enjoy at your own risk', this.titleSceneTextStyle).setOrigin(0.5)
+    this.menuSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Instructions: shoot = space bar | move left = left arrow | move right = right arrow | *important* enjoy at your own risk', this.menuSceneTextStyle).setOrigin(0.5)
   }
 
   update (time, delta) {
