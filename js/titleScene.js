@@ -12,7 +12,7 @@ class TitleScene extends Phaser.Scene {
 
     this.titleSceneBackgroundImage = null
     this.titleSceneText = null
-    this.titleSceneTextStyle = { font: '199px Times', fill: '#8B0000', align: 'center' }
+    this.titleSceneTextStyle = { font: '150px Times', fill: '#8B0000', align: 'center' }
   }
     //setting background to white
   init (data) {
@@ -21,7 +21,7 @@ class TitleScene extends Phaser.Scene {
     //calling image from image file
   preload () {
     console.log('Title Scene')
-    this.load.image('titleSceneBackground', 'images/UFOTITLE.jpg')
+    this.load.image('titleSceneBackground', 'images/STTITLE.jpg')
   }
     //dimensions of screen
   create (data) {

@@ -14,7 +14,7 @@ class MenuScene extends Phaser.Scene {
     this.startButton = null
     //instructions
     this.menuSceneText = null
-    this.menuSceneTextStyle = { font: '35px Times', fill: '#6F8FAF', align: 'center' }
+    this.menuSceneTextStyle = { font: '40px Times', fill: '#ff0000', align: 'center' }
   }
 
   init (data) {
