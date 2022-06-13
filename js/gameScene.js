@@ -43,9 +43,9 @@ class GameScene extends Phaser.Scene {
     console.log('Game Scene')
     
     //star backdrop image, spaceship image and missle image
-    this.load.image('starBackground', './images/UDBACKGROUND.jpg')
+    this.load.image('upsideDown', './images/UDBACKGROUND.jpg')
     this.load.image('ship', './images/El.png')
-    this.load.image('missile', './images/waffle.png')
+    this.load.image('waffle', './images/waffle.png')
     this.load.image('demo', './images/demogorgon.png')
     //sound for missle shot
     this.load.audio('laser', './sounds/missileNoise.wav')
@@ -55,7 +55,7 @@ class GameScene extends Phaser.Scene {
   }
     //dimensions for screen
   create (data) {
-    this.background = this.add.sprite(0, 0, 'starBackground').setScale(2.00)
+    this.background = this.add.sprite(0, 0, 'upsideDown').setScale(2.00)
     this.background.setOrigin(0, 0)
 
     this.scoreText = this.add.text(10, 10, 'Score: ' + this.score.toString(), this.scoreTextStyle)
@@ -63,16 +63,16 @@ class GameScene extends Phaser.Scene {
     this.ship = this.physics.add.sprite(1920 / 2, 1000 - 100, 'ship')
     
     // create group for missles
-    this.missileGroup = this.physics.add.group()
+    this.waffleGroup = this.physics.add.group()
 
     // create group for aliens/ufos 
     this.demoGroup = this.add.group()
     this.createDemo()
 
     // collisions between missles and ufos
-    this.physics.add.collider(this.missileGroup, this.demoGroup, function (missileCollide, demoCollide) {
+    this.physics.add.collider(this.waffleGroup, this.demoGroup, function (waffleCollide, demoCollide) {
       demoCollide.destroy()
-      missileCollide.destroy()
+      waffleCollide.destroy()
       this.sound.play('explosion')
       this.score = this.score + 1
       this.scoreText.setText('Score: ' + this.score.toString())
@@ -114,20 +114,20 @@ class GameScene extends Phaser.Scene {
     }
 
     if (keySpaceObj.isDown === true) {
-      if (this.fireMissile === false) {
+      if (this.fireWaffle === false) {
         //fire a missile
-        this.fireMissile = true
-        const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
-        this.missileGroup.add(aNewMissile)
+        this.fireWaffle = true
+        const aNewWaffle = this.physics.add.sprite(this.ship.x, this.ship.y, 'waffle')
+        this.waffleGroup.add(aNewWaffle)
         this.sound.play('laser')
       }  
     }
 
     if (keySpaceObj.isUp === true) {
-      this.fireMissile = false
+      this.fireWaffle = false
     }
 
-    this.missileGroup.children.each(function (item) {
+    this.waffleGroup.children.each(function (item) {
       item.y = item.y - 15
       if (item.y < 50) {
         item.destroy()
