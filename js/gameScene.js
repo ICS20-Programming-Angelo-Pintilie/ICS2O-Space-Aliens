@@ -50,7 +50,7 @@ class GameScene extends Phaser.Scene {
     //sound for missle shot
     this.load.audio('laser', './sounds/missileNoise.wav')
     this.load.audio('explosion', './sounds/ufoExplosion.wav')
-    this.load.audio('bomb', './sounds/bomb.wav')
+    this.load.audio('death', './sounds/demogorgonSound.mp3')
     
   }
     //dimensions for screen
@@ -82,7 +82,7 @@ class GameScene extends Phaser.Scene {
 
     // Collisions between ship and demogorgons
     this.physics.add.collider(this.ship, this.demoGroup, function (shipCollide, demoCollide) {
-      this.sound.play('bomb')
+      this.sound.play('death')
       this.physics.pause()
       demoCollide.destroy()
       shipCollide.destroy()
