@@ -8,15 +8,15 @@
 
 class GameScene extends Phaser.Scene {
 
-  //create a ufo
-  createUfo () {
-    const ufoXLocation = Math.floor(Math.random() * 1920) + 1 // this will get a number between 1 and 1920;
-    let ufoXVelocity = Math.floor(Math.random() * 50) + 1 // this will get a number between 1 and 50;
-    ufoXVelocity *= Math.round(Math.random()) ? 1 : -1 // this will add minus sign in 50% of cases
-    const aUfo = this.physics.add.sprite(ufoXLocation, 100, 'ufo')
-    aUfo.body.velocity.y = 200
-    aUfo.body.velocity.x = ufoXVelocity
-    this.ufoGroup.add(aUfo)
+  //create a demogorgon
+  createDemo () {
+    const demoXLocation = Math.floor(Math.random() * 1920) + 1 // this will get a number between 1 and 1920;
+    let demoXVelocity = Math.floor(Math.random() * 50) + 1 // this will get a number between 1 and 50;
+    demoXVelocity *= Math.round(Math.random()) ? 1 : -1 // this will add minus sign in 50% of cases
+    const aDemo = this.physics.add.sprite(demoXLocation, 100, 'demo')
+    aDemo.body.velocity.y = 200
+    aDemo.body.velocity.x = demoXVelocity
+    this.demoGroup.add(aDemo)
     
   }
   
@@ -46,7 +46,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('starBackground', './images/UDBACKGROUND.jpg')
     this.load.image('ship', './images/El.png')
     this.load.image('missile', './images/waffle.png')
-    this.load.image('ufo', './images/demogorgon.png')
+    this.load.image('demo', './images/demogorgon.png')
     //sound for missle shot
     this.load.audio('laser', './sounds/missileNoise.wav')
     this.load.audio('explosion', './sounds/ufoExplosion.wav')
@@ -66,25 +66,25 @@ class GameScene extends Phaser.Scene {
     this.missileGroup = this.physics.add.group()
 
     // create group for aliens/ufos 
-    this.ufoGroup = this.add.group()
-    this.createUfo()
+    this.demoGroup = this.add.group()
+    this.createDemo()
 
     // collisions between missles and ufos
-    this.physics.add.collider(this.missileGroup, this.ufoGroup, function (missileCollide, ufoCollide) {
-      ufoCollide.destroy()
+    this.physics.add.collider(this.missileGroup, this.demoGroup, function (missileCollide, demoCollide) {
+      demoCollide.destroy()
       missileCollide.destroy()
       this.sound.play('explosion')
       this.score = this.score + 1
       this.scoreText.setText('Score: ' + this.score.toString())
-      this.createUfo()
-      this.createUfo()
+      this.createDemo()
+      this.createDemo()
     }.bind(this))
 
-    // Collisions between ship and ufos
-    this.physics.add.collider(this.ship, this.ufoGroup, function (shipCollide, ufoCollide) {
+    // Collisions between ship and demogorgons
+    this.physics.add.collider(this.ship, this.demoGroup, function (shipCollide, demoCollide) {
       this.sound.play('bomb')
       this.physics.pause()
-      ufoCollide.destroy()
+      demoCollide.destroy()
       shipCollide.destroy()
       this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Game Over!\nClick to play again.', this.gameOverTextStyle).setOrigin(0.5)
       this.gameOverText.setInteractive({ useHandCursor: true })
