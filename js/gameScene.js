@@ -25,7 +25,7 @@ class GameScene extends Phaser.Scene {
 
     this.background = null
     this.ship = null
-    this.fireMissile = false
+    this.fireWaffle = false
     //score counter
     this.score = 0
     this.scoreText = null
