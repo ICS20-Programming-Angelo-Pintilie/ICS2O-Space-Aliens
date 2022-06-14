@@ -49,7 +49,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('demo', './images/demogorgon.png')
     //sound for waffle shot
     this.load.audio('laser', './sounds/missileNoise.wav')
-    this.load.audio('explosion', './sounds/ufoExplosion.wav')
+    this.load.audio('explosion', './sounds/demoExplosion.wav')
     this.load.audio('death', './sounds/demogorgonSound.mp3')
     
   }
