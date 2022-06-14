@@ -24,7 +24,7 @@ class GameScene extends Phaser.Scene {
     super({ key: 'gameScene' })
 
     this.background = null
-    this.ship = null
+    this.el = null
     this.fireWaffle = false
     //score counter
     this.score = 0
@@ -42,12 +42,12 @@ class GameScene extends Phaser.Scene {
   preload () {
     console.log('Game Scene')
     
-    //star backdrop image, spaceship image and missle image
+    //upside down backdrop image, El image and waffle image
     this.load.image('upsideDown', './images/UDBACKGROUND.jpg')
-    this.load.image('ship', './images/El.png')
+    this.load.image('el', './images/El.png')
     this.load.image('waffle', './images/waffle.png')
     this.load.image('demo', './images/demogorgon.png')
-    //sound for missle shot
+    //sound for waffle shot
     this.load.audio('laser', './sounds/missileNoise.wav')
     this.load.audio('explosion', './sounds/ufoExplosion.wav')
     this.load.audio('death', './sounds/demogorgonSound.mp3')
@@ -60,16 +60,16 @@ class GameScene extends Phaser.Scene {
 
     this.scoreText = this.add.text(10, 10, 'Score: ' + this.score.toString(), this.scoreTextStyle)
 
-    this.ship = this.physics.add.sprite(1920 / 2, 1000 - 100, 'ship')
+    this.el = this.physics.add.sprite(1920 / 2, 1000 - 100, 'el')
     
-    // create group for missles
+    // create group for waffles
     this.waffleGroup = this.physics.add.group()
 
-    // create group for aliens/ufos 
+    // create group for demogorgons 
     this.demoGroup = this.add.group()
     this.createDemo()
 
-    // collisions between missles and ufos
+    // collisions between waffles and demogorgons
     this.physics.add.collider(this.waffleGroup, this.demoGroup, function (waffleCollide, demoCollide) {
       demoCollide.destroy()
       waffleCollide.destroy()
@@ -80,12 +80,12 @@ class GameScene extends Phaser.Scene {
       this.createDemo()
     }.bind(this))
 
-    // Collisions between ship and demogorgons
-    this.physics.add.collider(this.ship, this.demoGroup, function (shipCollide, demoCollide) {
+    // Collisions between El and Demogorgons
+    this.physics.add.collider(this.el, this.demoGroup, function (elCollide, demoCollide) {
       this.sound.play('death')
       this.physics.pause()
       demoCollide.destroy()
-      shipCollide.destroy()
+      elCollide.destroy()
       this.gameOverText = this.add.text(1920 / 2, 1080 / 2, 'Game Over!\nClick to play again.', this.gameOverTextStyle).setOrigin(0.5)
       this.gameOverText.setInteractive({ useHandCursor: true })
       this.gameOverText.on('pointerdown', () => this.scene.start('gameScene'))
@@ -99,26 +99,26 @@ class GameScene extends Phaser.Scene {
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
-    //code to move ship left
+    //code to move El left
     if (keyLeftObj.isDown === true) {
-      this.ship.x -= 15
-      if (this.ship.x < 0) {
-        this.ship.x = 0
+      this.el.x -= 15
+      if (this.el.x < 0) {
+        this.el.x = 0
       }
     }
-    //code to move ship right
+    //code to move El right
     if (keyRightObj.isDown === true) {
-      this.ship.x += 15
-      if (this.ship.x > 1920) {
-        this.ship.x = 1920
+      this.el.x += 15
+      if (this.el.x > 1920) {
+        this.el.x = 1920
       }
     }
 
     if (keySpaceObj.isDown === true) {
       if (this.fireWaffle === false) {
-        //fire a missile
+        //fire a waffle
         this.fireWaffle = true
-        const aNewWaffle = this.physics.add.sprite(this.ship.x, this.ship.y, 'waffle')
+        const aNewWaffle = this.physics.add.sprite(this.el.x, this.el.y, 'waffle')
         this.waffleGroup.add(aNewWaffle)
         this.sound.play('laser')
       }  
