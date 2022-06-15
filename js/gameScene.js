@@ -48,13 +48,18 @@ class GameScene extends Phaser.Scene {
     this.load.image('waffle', './images/waffle.png')
     this.load.image('demo', './images/demogorgon.png')
     //sound for waffle shot
-    this.load.audio('laser', './sounds/missileNoise.wav')
-    this.load.audio('explosion', './sounds/demoExplosion.wav')
+    this.load.audio('toaster', './sounds/toaster.mp3')
+    this.load.audio('elim', './sounds/demoDeath.mp3')
     this.load.audio('death', './sounds/demogorgonSound.mp3')
     
   }
     //dimensions for screen
   create (data) {
+    //theme soundtrack code
+    var audio = new Audio('sounds/strangerthingstheme.mp3');
+    audio.play();
+    audio.loop = true
+    //code for background
     this.background = this.add.sprite(0, 0, 'upsideDown').setScale(2.00)
     this.background.setOrigin(0, 0)
 
@@ -73,7 +78,7 @@ class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.waffleGroup, this.demoGroup, function (waffleCollide, demoCollide) {
       demoCollide.destroy()
       waffleCollide.destroy()
-      this.sound.play('explosion')
+      this.sound.play('elim')
       this.score = this.score + 1
       this.scoreText.setText('Score: ' + this.score.toString())
       this.createDemo()
@@ -120,7 +125,7 @@ class GameScene extends Phaser.Scene {
         this.fireWaffle = true
         const aNewWaffle = this.physics.add.sprite(this.el.x, this.el.y, 'waffle')
         this.waffleGroup.add(aNewWaffle)
-        this.sound.play('laser')
+        this.sound.play('toaster')
       }  
     }
 
@@ -133,7 +138,16 @@ class GameScene extends Phaser.Scene {
       if (item.y < 50) {
         item.destroy()
       }  
-    })  
+    }) 
+
+    // allows for aliens to reset there position after going off the screen.
+    this.demoGroup.children.each(function (item) {
+      if ((item.y > 1080) || (item.x < 0 || item.x > 1920)) {
+        item.y = -20
+        const demoYCoordinate = Math.floor(Math.random() * 1920) + 1
+        item.x = demoYCoordinate
+      }
+    })
   }
 }
 export default GameScene
