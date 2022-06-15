@@ -104,18 +104,18 @@ class GameScene extends Phaser.Scene {
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
-    //code to move El left
+    //code to move El left with wrap
     if (keyLeftObj.isDown === true) {
       this.el.x -= 15
       if (this.el.x < 0) {
-        this.el.x = 0
+        this.el.x = 1920
       }
     }
-    //code to move El right
+    //code to move El right with wrap
     if (keyRightObj.isDown === true) {
       this.el.x += 15
       if (this.el.x > 1920) {
-        this.el.x = 1920
+        this.el.x = 0
       }
     }
 
